@@ -3,8 +3,14 @@ const Feature = require("../../models/Feature");
 const addFeatureImage = async (req, res) => {
   try {
     const { image } = req.body;
+    if (!image) {
+      return res.status(400).json({
+        success: false,
+        message: "Image is required!",
+      });
+    }
 
-    console.log(image, "image");
+    // console.log(image, "image");
 
     const featureImages = new Feature({
       image,
